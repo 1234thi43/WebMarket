@@ -49,7 +49,7 @@ export default function Login() {
 			);
 
 			if (res.success) {
-				document.cookie = `token=${res.token}; path=/; max-age=${30 * 24 * 60 * 60}`;
+				// document.cookie = `token=${res.token}; path=/; max-age=${30 * 24 * 60 * 60}`;
 				dispatch(setUser({ user: res.user, token: res.token }));
 				reset();
 				navigate('/');

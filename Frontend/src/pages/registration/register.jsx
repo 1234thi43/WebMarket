@@ -58,7 +58,7 @@ export default function Register() {
 
 			if (res.success) {
 				dispatch(setUser({ user: res.user, token: res.token }));
-				document.cookie = `token=${res.token}; path=/; max-age=${30 * 24 * 60 * 60}`;
+				// document.cookie = `token=${res.token}; path=/; max-age=${30 * 24 * 60 * 60}`;
 				reset();
 				navigate('/');
 			} else {
