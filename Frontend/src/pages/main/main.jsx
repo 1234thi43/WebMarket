@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
@@ -8,6 +7,7 @@ import { CATEGORIES } from '../../constants/categories';
 import Loader from '../../components/common/loader/loader';
 import { Button } from '../../components';
 import { Label } from '../../components';
+import { URL } from '../../constants/url';
 
 const Container = styled.div`
 	display: flex;
@@ -21,7 +21,7 @@ const SearchBar = styled.input`
 	font-size: 16px;
 	border: 1px solid #e0cfa5;
 	border-radius: 6px;
-	width: 100%;
+	width: 1110px;
 	max-width: 1200px;
 `;
 
@@ -140,7 +140,8 @@ export default function Main() {
 		(async () => {
 			try {
 				setLoading(true);
-				const res = await fetch('http://localhost:5000/api/products');
+				// const res = await fetch('http://localhost:5000/api/products');
+				const res = await fetch(`${URL}/api/products`);
 				const data = await res.json();
 				if (data.success) setProducts(data.products);
 			} catch (err) {
@@ -263,7 +264,8 @@ export default function Main() {
 								<ProductImage>
 									{p.image ? (
 										<img
-											src={`http://localhost:5000${p.image}`}
+											// src={`http://localhost:5000${p.image}`}
+											src={`${URL}${p.image}`}
 											alt={p.title}
 											style={{
 												width: '100%',

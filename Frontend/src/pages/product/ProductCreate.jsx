@@ -3,6 +3,7 @@ import Loader from '../../components/common/loader/loader';
 import { CATEGORIES } from '../../constants/categories';
 import { FormWrapper, Label, Input, TextArea, Select, Button } from '../../components';
 import { useNotification } from '../../components/common/notification/useNotification';
+import { URL } from '../../constants/url';
 
 export default function ProductCreate() {
 	const [form, setForm] = useState({
@@ -35,7 +36,8 @@ export default function ProductCreate() {
 			formData.append('category', form.category);
 			if (form.image) formData.append('image', form.image);
 
-			const response = await fetch('http://localhost:5000/api/products', {
+			// const response = await fetch('http://localhost:5000/api/products', {
+			const response = await fetch(`${URL}/api/products`, {
 				method: 'POST',
 				body: formData,
 				credentials: 'include',

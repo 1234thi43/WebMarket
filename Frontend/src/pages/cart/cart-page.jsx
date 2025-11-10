@@ -100,7 +100,8 @@ export default function CartPage() {
 						<Row key={p._id}>
 							<ProductBlock>
 								<Img
-									src={p.image ? `http://localhost:5000${p.image}` : ''}
+									// src={p.image ? `http://localhost:5000${p.image}` : ''}
+									src={p.image ? `${URL}${p.image}` : ''}
 									alt={p.title}
 								/>
 								<div>

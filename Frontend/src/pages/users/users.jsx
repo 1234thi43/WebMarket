@@ -10,6 +10,7 @@ import Loader from '../../components/common/loader/loader';
 import { UserActionMenu } from './UserActionsMenu';
 import { Select } from '../../components';
 import { Button } from '../../components';
+import { URL } from '../../constants/url';
 
 const UsersContainer = ({ className }) => {
 	const [roles, setRoles] = useState([]);
@@ -25,8 +26,10 @@ const UsersContainer = ({ className }) => {
 
 		setLoading(true);
 		Promise.all([
-			request('http://localhost:5000/api/users', 'GET'),
-			request('http://localhost:5000/api/users/roles', 'GET'),
+			// request('http://localhost:5000/api/users', 'GET'),
+			request(`${URL}/api/users`, 'GET'),
+			// request('http://localhost:5000/api/users/roles', 'GET'),
+			request(`${URL}/api/users/roles`, 'GET'),
 		])
 			.then(([usersRes, rolesRes]) => {
 				if (usersRes.error || rolesRes.error) {
@@ -43,7 +46,8 @@ const UsersContainer = ({ className }) => {
 	const updateUserRoleOnServer = async (id, newRole) => {
 		setLoading(true);
 		try {
-			const res = await request(`http://localhost:5000/api/users/${id}`, 'PATCH', {
+			// const res = await request(`http://localhost:5000/api/users/${id}`, 'PATCH', {
+			const res = await request(`${URL}/api/users/${id}`, 'PATCH', {
 				role: newRole,
 			});
 			if (res.error) {
@@ -77,7 +81,8 @@ const UsersContainer = ({ className }) => {
 				setLoading(true);
 				try {
 					const res = await request(
-						`http://localhost:5000/api/users/${id}`,
+						// `http://localhost:5000/api/users/${id}`,
+						`${URL}/api/users/${id}`,
 						'DELETE',
 					);
 					if (res.error) {

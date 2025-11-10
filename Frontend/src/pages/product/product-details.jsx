@@ -7,6 +7,7 @@ import { CATEGORIES } from '../../constants/categories';
 import Loader from '../../components/common/loader/loader';
 import { FormWrapper } from '../../components';
 import { Button } from '../../components';
+import { URL } from '../../constants/url';
 
 const Image = styled.img`
 	width: 300px;
@@ -32,7 +33,8 @@ export default function ProductDetails() {
 		(async () => {
 			try {
 				setLoading(true);
-				const res = await fetch(`http://localhost:5000/api/products/${id}`);
+				// const res = await fetch(`http://localhost:5000/api/products/${id}`);
+				const res = await fetch(`${URL}/api/products/${id}`);
 				const data = await res.json();
 				if (data.success) setProduct(data.product);
 			} catch (err) {
@@ -59,7 +61,8 @@ export default function ProductDetails() {
 
 			<Row>
 				<Image
-					src={product.image ? `http://localhost:5000${product.image}` : ''}
+					// src={product.image ? `http://localhost:5000${product.image}` : ''}
+					src={product.image ? `${URL}${product.image}` : ''}
 					alt={product.title}
 				/>
 				<div>

@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
@@ -13,6 +12,7 @@ import { Table } from '../../components';
 import { Button } from '../../components';
 import { Label } from '../../components';
 import { Input } from '../../components';
+import { URL } from '../../constants/url';
 
 const Wrapper = styled.div`
 	display: flex;
@@ -58,7 +58,8 @@ export default function ProductPage() {
 			setLoading(true);
 			try {
 				const res = await fetch(
-					`http://localhost:5000/api/products/user/${userId}`,
+					// `http://localhost:5000/api/products/user/${userId}`,
+					`${URL}/api/products/user/${userId}`,
 					{ credentials: 'include', cache: 'no-store' },
 				);
 				const data = await res.json();
@@ -106,7 +107,8 @@ export default function ProductPage() {
 	const saveProduct = async (formData, isEdit) => {
 		setLoading(true);
 		try {
-			let url = 'http://localhost:5000/api/products';
+			// let url = 'http://localhost:5000/api/products';
+			let url = `${URL}/api/products`;
 			let method = 'POST';
 			if (isEdit) {
 				url += `/${editingId}`;
@@ -158,7 +160,8 @@ export default function ProductPage() {
 			onConfirm: async () => {
 				setLoading(true);
 				try {
-					const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+					// const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+					const res = await fetch(`${URL}/api/products/${id}`, {
 						method: 'DELETE',
 						credentials: 'include',
 					});
@@ -196,7 +199,8 @@ export default function ProductPage() {
 	const toggleProductActive = async (id) => {
 		setLoading(true);
 		try {
-			const res = await fetch(`http://localhost:5000/api/products/${id}/toggle`, {
+			// const res = await fetch(`http://localhost:5000/api/products/${id}/toggle`, {
+			const res = await fetch(`${URL}/api/products/${id}/toggle`, {
 				method: 'PATCH',
 				credentials: 'include',
 			});

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../slices/authSlice';
 import { request } from '../utils/request';
+import { URL } from '../constants/url';
 // import { useNavigate } from 'react-router';
 
 export const AuthAutoLoader = () => {
@@ -12,7 +13,8 @@ export const AuthAutoLoader = () => {
 		async function fetchCurrentUser() {
 			try {
 				const res = await request(
-					'http://localhost:5000/api/users/me',
+					// 'http://localhost:5000/api/users/me',
+					`${URL}/api/users/me`,
 					'GET',
 					null,
 					{

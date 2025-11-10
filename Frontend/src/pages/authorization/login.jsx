@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { URL } from '../../constants/url';
 
 const Message = styled.p`
 	color: ${(props) => (props.$error ? 'red' : 'green')};
@@ -41,7 +42,8 @@ export default function Login() {
 	const onSubmit = async (data) => {
 		try {
 			const res = await request(
-				'http://localhost:5000/api/auth/login',
+				// `http://localhost:5000/api/auth/login`,
+				`${URL}/api/auth/login`,
 				'POST',
 				data,
 			);
