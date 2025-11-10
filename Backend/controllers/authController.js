@@ -6,13 +6,21 @@ exports.registerUser = async (req, res) => {
     const { name, email, password } = req.body;
     const { user, token } = await register(name, email, password);
 
+    // res
+    // .cookie("token", token, {
+    //   httpOnly: true,
+    //   secure: false,
+    //   sameSite: "lax",
+    //   maxAge: 30 * 24 * 60 * 60 * 1000,
+    // })
     res
       .cookie("token", token, {
         httpOnly: true,
-        secure: false,
-        sameSite: "lax",
+        secure: true,
+        sameSite: "none",
         maxAge: 30 * 24 * 60 * 60 * 1000,
       })
+
       .send({ success: true, user: mapUser(user) });
   } catch (err) {
     console.error("❌ Registration error:", err.message);
