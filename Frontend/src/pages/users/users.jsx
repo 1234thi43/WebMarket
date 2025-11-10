@@ -310,7 +310,6 @@ const UsersContainer = ({ className }) => {
 	if (userRole !== ROLE.ADMIN) return <div>⛔ Доступ запрещён</div>;
 	if (loading) return <Loader />;
 
-	// const totalPages = Math.ceil(users.length / 5);
 	const startIndex = 0;
 	const currentItems = users.slice(startIndex, startIndex + 5);
 
